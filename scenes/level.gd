@@ -12,6 +12,7 @@ func _ready():
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(del_player)
 	
+	
 	for id in multiplayer.get_peers():
 		add_player(id)
 	
@@ -20,6 +21,7 @@ func _ready():
 
 
 func add_player(id: int):
+	Global.sprint("Adding player")
 	var character = preload("res://stuff/player/player.tscn").instantiate()
 	character.player_id = id
 	character.position = Vector2(40 + randf() * SPAWN_RANDOM, 360)
@@ -31,3 +33,7 @@ func del_player(id: int):
 	if !player_folder.has_node(str(id)):
 		return
 	player_folder.get_node(str(id)).queue_free()
+#
+#func _process(_delta):
+	#if multiplayer.is_server():
+		#print(multiplayer.get_peers())

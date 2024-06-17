@@ -11,7 +11,7 @@ func _ready():
 func jump():
 	jumping = true
 
-func _process(delta):
+func _process(_delta):
 	direction = Input.get_axis("move_left", "move_right")
 	if Input.is_action_just_pressed("jump"):
 		jump.rpc()
