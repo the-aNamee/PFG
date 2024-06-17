@@ -16,6 +16,10 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	if player_id == 1:
+		queue_free()
+	
+	
 	if player_id == multiplayer.get_unique_id():
 		$Camera2D.make_current()
 	

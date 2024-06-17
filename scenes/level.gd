@@ -21,7 +21,7 @@ func _ready():
 
 
 func add_player(id: int):
-	Global.sprint("Adding player")
+	Global.sprint("Player " + str(id) + " has joined the game.")
 	var character = preload("res://stuff/player/player.tscn").instantiate()
 	character.player_id = id
 	character.position = Vector2(40 + randf() * SPAWN_RANDOM, 360)
