@@ -53,4 +53,5 @@ func _input(event):
 	if !multiplayer.is_server():
 		return
 	if event.is_action_pressed("reset"):
+		print("Reseting")
 		change_scene.call_deferred(load("res://scenes/level_0.tscn"))

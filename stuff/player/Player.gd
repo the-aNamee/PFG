@@ -2,8 +2,11 @@ extends CharacterBody2D
 
 
 @onready var input = $PlayerInput
+@onready var art = $Art
+@onready var animation_player = $Art/AnimationPlayer
 
-const SPEED = 300.0
+const SPEED = 100.0
+const FRICTION = 0.75
 const JUMP_VELOCITY = -400.0
 
 @export var player_id = 1 :
@@ -31,15 +34,23 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if input.jumping and is_on_floor():
+	if input.jumping && is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	input.jumping = false
 	
+	# Handle action.
+	if input.action_1ing && is_on_floor():
+		print("Slashing")
+		animation_player.play("slash")
+	input.action_1ing = false
+	
 	# Get the input direction and handle the movement/deceleration.
-	var direction = input.direction
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	velocity.x = velocity.x * FRICTION
+	velocity.x += input.direction * SPEED
+	
+	if input.direction > 0:
+		$Art.scale.x = 1
+	elif input.direction < 0:
+		$Art.scale.x = -1
 	
 	move_and_slide()
