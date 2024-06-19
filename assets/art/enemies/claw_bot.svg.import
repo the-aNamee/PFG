@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyf8n5pwjq4w0"
-path="res://.godot/imported/player.svg-133be938949531406c9c3b8ef401778b.ctex"
+uid="uid://brarf7mog50iw"
+path="res://.godot/imported/claw_bot.svg-ca67b69128d6055aaaaa895347e47983.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player.svg"
-dest_files=["res://.godot/imported/player.svg-133be938949531406c9c3b8ef401778b.ctex"]
+source_file="res://assets/art/enemies/claw_bot.svg"
+dest_files=["res://.godot/imported/claw_bot.svg-ca67b69128d6055aaaaa895347e47983.ctex"]
 
 [params]
 

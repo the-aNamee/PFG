@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm1ieqpngwl4s"]
+
+[ext_resource type="Script" path="res://stuff/systems/hit system/hit_system.gd" id="1_qhsyn"]
+
+[node name="HitSystem" type="Node"]
+script = ExtResource("1_qhsyn")

@@ -14,15 +14,12 @@ const JUMP_VELOCITY = -400.0
 		player_id = id
 		$PlayerInput.set_multiplayer_authority(id)
 
+@export var can_turn_around = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	if player_id == 1:
-		queue_free()
-	
-	
 	if player_id == multiplayer.get_unique_id():
 		$Camera2D.make_current()
 	
@@ -39,8 +36,7 @@ func _physics_process(delta):
 	input.jumping = false
 	
 	# Handle action.
-	if input.action_1ing && is_on_floor():
-		print("Slashing")
+	if input.action_1ing:
 		animation_player.play("slash")
 	input.action_1ing = false
 	
@@ -48,9 +44,13 @@ func _physics_process(delta):
 	velocity.x = velocity.x * FRICTION
 	velocity.x += input.direction * SPEED
 	
-	if input.direction > 0:
+	if input.direction > 0 && can_turn_around:
 		$Art.scale.x = 1
-	elif input.direction < 0:
+	elif input.direction < 0 && can_turn_around:
 		$Art.scale.x = -1
 	
 	move_and_slide()
+
+
+func _on_death():
+	queue_free()

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c57jtypplnqnr"]
+
+[ext_resource type="Script" path="res://stuff/debug camera/DebugCamera.gd" id="1_kbav7"]
+
+[node name="DebugCamera" type="Camera2D"]
+position = Vector2(576, 324)
+enabled = false
+script = ExtResource("1_kbav7")

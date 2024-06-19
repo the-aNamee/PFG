@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8deumkio1j85"]
+[gd_scene load_steps=9 format=3 uid="uid://c8deumkio1j85"]
 
 [ext_resource type="Texture2D" uid="uid://erprtjkqju0y" path="res://assets/art/tilemaps/testing.svg" id="1_4s1rl"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_228ee"]
-[ext_resource type="PackedScene" uid="uid://clctywuy6360q" path="res://stuff/player/player.tscn" id="2_hv5ik"]
+[ext_resource type="PackedScene" uid="uid://drbudtrtckdtt" path="res://stuff/enemies/punching bag/punching_bag.tscn" id="3_1xaqq"]
+[ext_resource type="PackedScene" uid="uid://bg7d5jakrybnq" path="res://stuff/enemies/claw bot/claw_bot.tscn" id="3_wlvgy"]
+[ext_resource type="Script" path="res://stuff/debug camera/DebugCamera.gd" id="5_vwgob"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_don3i"]
 texture = ExtResource("1_4s1rl")
@@ -17,6 +19,15 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_don3i")
 
+[sub_resource type="GDScript" id="GDScript_2qa3m"]
+script/source = "extends Node
+
+func _ready():
+	var clawer = preload(\"res://stuff/enemies/claw bot/claw_bot.tscn\").instantiate()
+	clawer.position = Vector2(1957, 590)
+	add_child(clawer)
+"
+
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_228ee")
 
@@ -27,9 +38,22 @@ layer_0/tile_data = PackedInt32Array(1245184, 1, 0, 1310720, 1, 0, 1245185, 1, 0
 
 [node name="Players" type="Node" parent="."]
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://stuff/player/player.tscn")
 spawn_path = NodePath("../Players")
 
-[node name="Player" parent="." instance=ExtResource("2_hv5ik")]
-position = Vector2(430, 365)
+[node name="Enemies" type="Node" parent="."]
+script = SubResource("GDScript_2qa3m")
+
+[node name="ClawBot" parent="Enemies" instance=ExtResource("3_wlvgy")]
+position = Vector2(775, 502)
+
+[node name="PunchingBag" parent="Enemies" instance=ExtResource("3_1xaqq")]
+
+[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://stuff/enemies/claw bot/claw_bot.tscn", "res://stuff/enemies/punching bag/punching_bag.tscn")
+spawn_path = NodePath("../Enemies")
+
+[node name="DebugCamera" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("5_vwgob")

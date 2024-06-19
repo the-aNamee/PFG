@@ -8,13 +8,18 @@ extends MultiplayerSynchronizer
 func _ready():
 	set_process(get_multiplayer_authority() == multiplayer.get_unique_id())
 
-@rpc("call_local")
+@rpc("any_peer")
 func jump():
 	jumping = true
 
-@rpc("call_local")
+@rpc()
 func action_1():
-	print("Actioning")
+	server_confirm.rpc()
+	if multiplayer.is_server():
+		action_1ing = true
+
+@rpc("any_peer")
+func server_confirm() -> void:
 	action_1ing = true
 
 func _process(_delta):
@@ -22,4 +27,4 @@ func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
 		jump.rpc()
 	if Input.is_action_just_pressed("action 1"):
-		action_1.rpc()
+		action_1.rpc_id(1)

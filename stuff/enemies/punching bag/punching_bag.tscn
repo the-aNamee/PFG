@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://drbudtrtckdtt"]
+
+[ext_resource type="PackedScene" uid="uid://chm7svgl6dutb" path="res://stuff/systems/health system/health_system.tscn" id="1_f6rfy"]
+[ext_resource type="Script" path="res://stuff/enemies/punching bag/punching_bag.gd" id="1_wq65c"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_6dsar"]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c02tx"]
+radius = 16.1245
+
+[node name="PunchingBag" type="CharacterBody2D"]
+position = Vector2(327, 560)
+script = ExtResource("1_wq65c")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("SphereMesh_6dsar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c02tx")
+
+[node name="HealthSystem" parent="." instance=ExtResource("1_f6rfy")]
+
+[connection signal="die" from="HealthSystem" to="." method="_on_death"]
