@@ -8,7 +8,7 @@ func _ready():
 		return
 	enabled = true
 
-func _process(delta):
+func _process(_delta):
 	if !multiplayer.is_server():
 		return
 	

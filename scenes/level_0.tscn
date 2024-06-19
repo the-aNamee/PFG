@@ -23,9 +23,10 @@ sources/1 = SubResource("TileSetAtlasSource_don3i")
 script/source = "extends Node
 
 func _ready():
-	var clawer = preload(\"res://stuff/enemies/claw bot/claw_bot.tscn\").instantiate()
-	clawer.position = Vector2(1957, 590)
-	add_child(clawer)
+	if multiplayer.is_server():
+		var clawer = preload(\"res://stuff/enemies/claw bot/claw_bot.tscn\").instantiate()
+		clawer.position = Vector2(1957, 590)
+		add_child(clawer, true)
 "
 
 [node name="Level0" type="Node2D"]
@@ -49,9 +50,10 @@ script = SubResource("GDScript_2qa3m")
 position = Vector2(775, 502)
 
 [node name="PunchingBag" parent="Enemies" instance=ExtResource("3_1xaqq")]
+position = Vector2(322, 571)
 
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://stuff/enemies/claw bot/claw_bot.tscn", "res://stuff/enemies/punching bag/punching_bag.tscn")
+_spawnable_scenes = PackedStringArray("res://stuff/enemies/punching bag/punching_bag.tscn", "res://stuff/enemies/claw bot/claw_bot.tscn")
 spawn_path = NodePath("../Enemies")
 
 [node name="DebugCamera" type="Camera2D" parent="."]

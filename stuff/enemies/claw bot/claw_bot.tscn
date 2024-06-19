@@ -32,7 +32,6 @@ script = ExtResource("1_0gd1v")
 
 [node name="Sprite2d" type="Sprite2D" parent="Art"]
 texture = ExtResource("2_srrao")
-flip_h = true
 
 [node name="Hitter" type="Area2D" parent="Art"]
 

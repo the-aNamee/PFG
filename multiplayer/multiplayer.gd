@@ -3,7 +3,7 @@ extends Node
 const PORT = 4433
 
 func _ready():
-	get_tree().paused
+	#get_tree().paused
 	multiplayer.server_relay = false
 	
 	if DisplayServer.get_name() == "headless":

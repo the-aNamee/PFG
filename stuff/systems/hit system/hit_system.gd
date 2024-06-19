@@ -4,7 +4,7 @@ extends Node
 
 const HealthSystemScript = preload("res://stuff/systems/health system/health_system.gd")
 
-func hit(body: CollisionObject2D):
+func hit(body):
 	for node in body.get_children():
 		var script = node.get_script()
 		if script == HealthSystemScript:
