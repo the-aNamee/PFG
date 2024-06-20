@@ -32,7 +32,7 @@ height = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_c02tx"]
 radius = 16.1245
 
-[sub_resource type="PackedScene" id="PackedScene_xr603"]
+[sub_resource type="PackedScene" id="PackedScene_8seoj"]
 _bundled = {
 "conn_count": 1,
 "conns": PackedInt32Array(3, 0, 10, 9, 2, 0, 0),
@@ -65,7 +65,7 @@ properties/3/path = NodePath(".:velocity")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[sub_resource type="PackedScene" id="PackedScene_cx63e"]
+[sub_resource type="PackedScene" id="PackedScene_fy4xo"]
 _bundled = {
 "conn_count": 2,
 "conns": PackedInt32Array(3, 7, 19, 18, 2, 0, 0, 6, 0, 21, 20, 2, 0, 0),
@@ -100,11 +100,10 @@ position = Vector2(322, 571)
 [node name="ClawBot" parent="EntityFolder" instance=ExtResource("4_x46px")]
 position = Vector2(823, 496)
 
-[node name="EntitySpawner" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("entities_to_spawn")]
+[node name="EntitySpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://stuff/enemies/punching bag/punching_bag.tscn", "res://stuff/enemies/claw bot/claw_bot.tscn")
-spawn_path = NodePath("../EntityFolder")
 script = ExtResource("5_qlnic")
-entities_to_spawn = [SubResource("PackedScene_xr603"), SubResource("PackedScene_cx63e")]
+entities_to_spawn = Array[PackedScene]([SubResource("PackedScene_8seoj"), SubResource("PackedScene_fy4xo")])
 
 [node name="DebugCamera" type="Camera2D" parent="."]
 position = Vector2(576, 324)

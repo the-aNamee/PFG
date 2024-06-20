@@ -1,1 +1,1 @@
-A thingy
+I could not have done it without brennennen. "881307274549805096", "https://discord.com/channels/212250894228652034/466075013095751690/1253182147938746428"

@@ -2,6 +2,7 @@ extends Node2D
 
 
 @onready var player_folder = $Players
+@onready var entity_spawner = $EntitySpawner
 
 const SPAWN_RANDOM = 430 - 40
 
@@ -18,6 +19,8 @@ func _ready():
 	
 	#if !OS.has_feature("dedicated_server"):
 		#add_player(1)
+	
+	entity_spawner.setup()
 
 
 func add_player(id: int):
@@ -33,7 +36,3 @@ func del_player(id: int):
 	if !player_folder.has_node(str(id)):
 		return
 	player_folder.get_node(str(id)).queue_free()
-#
-#func _process(_delta):
-	#if multiplayer.is_server():
-		#print(multiplayer.get_peers())
