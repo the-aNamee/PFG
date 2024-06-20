@@ -1,59 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   width="32"
-   height="48"
-   viewBox="0 0 8.4666665 12.7"
-   version="1.1"
-   id="svg1"
-   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
-   sodipodi:docname="player.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="mm"
-     inkscape:zoom="16"
-     inkscape:cx="43.15625"
-     inkscape:cy="9.46875"
-     inkscape:window-width="1920"
-     inkscape:window-height="991"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs1" />
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <path
-       id="rect1"
-       style="fill:#e0ac69;stroke-width:1.83272;stroke-linecap:round"
-       d="M 0.60655769,1.9732625 H 7.8600701 V 4.7699204 H 0.60655769 Z"
-       sodipodi:nodetypes="ccccc" />
-    <path
-       id="rect1-4"
-       style="fill:#ff0000;stroke-width:1.5758;stroke-linecap:round"
-       d="M 0.60655729,4.7701445 7.8600693,4.770278 V 12.7 H 0.60655729 Z"
-       sodipodi:nodetypes="ccccc" />
-    <ellipse
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.067;stroke-linecap:round"
-       id="path2"
-       cx="7.0338798"
-       cy="3.2196023"
-       rx="0.37164056"
-       ry="0.80663246" />
-  </g>
-</svg>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.inkscape.org/namespaces/inkscape" xmlns:ns2="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="128.0" height="192.0" viewBox="0 0 8.4666665 12.7" version="1.1" id="svg1" ns1:version="1.3.2 (091e20e, 2023-11-25, custom)" ns2:docname="player.svg">
+  <ns2:namedview id="namedview1" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" ns1:showpageshadow="2" ns1:pageopacity="0.0" ns1:pagecheckerboard="0" ns1:deskcolor="#d1d1d1" ns1:document-units="mm" ns1:zoom="16" ns1:cx="43.15625" ns1:cy="9.46875" ns1:window-width="1920" ns1:window-height="991" ns1:window-x="-9" ns1:window-y="-9" ns1:window-maximized="1" ns1:current-layer="layer1" />
+  <ns0:defs id="defs1" />
+  <ns0:g ns1:label="Layer 1" ns1:groupmode="layer" id="layer1">
+    <ns0:path id="rect1" style="fill:#e0ac69;stroke-width:1.83272;stroke-linecap:round" d="M 0.60655769,1.9732625 H 7.8600701 V 4.7699204 H 0.60655769 Z" ns2:nodetypes="ccccc" />
+    <ns0:path id="rect1-4" style="fill:#ff0000;stroke-width:1.5758;stroke-linecap:round" d="M 0.60655729,4.7701445 7.8600693,4.770278 V 12.7 H 0.60655729 Z" ns2:nodetypes="ccccc" />
+    <ns0:ellipse style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.067;stroke-linecap:round" id="path2" cx="7.0338798" cy="3.2196023" rx="0.37164056" ry="0.80663246" />
+  </ns0:g>
+</ns0:svg>

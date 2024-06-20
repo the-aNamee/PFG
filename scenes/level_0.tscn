@@ -1,16 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8deumkio1j85"]
+[gd_scene load_steps=9 format=3 uid="uid://c8deumkio1j85"]
 
 [ext_resource type="Texture2D" uid="uid://erprtjkqju0y" path="res://assets/art/tilemaps/testing.svg" id="1_4s1rl"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_228ee"]
 [ext_resource type="PackedScene" uid="uid://drbudtrtckdtt" path="res://stuff/enemies/punching bag/punching_bag.tscn" id="3_1xaqq"]
 [ext_resource type="PackedScene" uid="uid://bg7d5jakrybnq" path="res://stuff/enemies/claw bot/claw_bot.tscn" id="4_x46px"]
-[ext_resource type="Script" path="res://stuff/enemies/punching bag/punching_bag.gd" id="5_ihwpo"]
 [ext_resource type="Script" path="res://scenes/EntitySpawner.gd" id="5_qlnic"]
 [ext_resource type="Script" path="res://stuff/debug camera/DebugCamera.gd" id="5_vwgob"]
-[ext_resource type="PackedScene" uid="uid://chm7svgl6dutb" path="res://stuff/systems/health system/health_system.tscn" id="6_6sbyo"]
-[ext_resource type="Script" path="res://stuff/enemies/claw bot/claw_bot.gd" id="8_ga35d"]
-[ext_resource type="Texture2D" uid="uid://brarf7mog50iw" path="res://assets/art/enemies/claw_bot.svg" id="9_noduq"]
-[ext_resource type="PackedScene" uid="uid://dm1ieqpngwl4s" path="res://stuff/systems/hit system/hit_system.tscn" id="10_fgg7y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_don3i"]
 texture = ExtResource("1_4s1rl")
@@ -24,59 +19,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_don3i")
-
-[sub_resource type="SphereMesh" id="SphereMesh_6dsar"]
-radius = 16.0
-height = 32.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_c02tx"]
-radius = 16.1245
-
-[sub_resource type="PackedScene" id="PackedScene_xr603"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(3, 0, 10, 9, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("PunchingBag", "position", "script", "CharacterBody2D", "MeshInstance2D", "mesh", "CollisionShape2D", "shape", "HealthSystem", "_on_death", "die"),
-"node_count": 4,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 1, 5, 2, 0, 0, 0, 6, 6, -1, 1, 7, 3, 0, 0, 0, 2147483647, 8, 4, 0, 0),
-"variants": [Vector2(322, 571), ExtResource("5_ihwpo"), SubResource("SphereMesh_6dsar"), SubResource("CircleShape2D_c02tx"), ExtResource("6_6sbyo")],
-"version": 3
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpndl"]
-size = Vector2(3, 5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql5xb"]
-size = Vector2(20, 26)
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m5mgt"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath("Art:scale")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("HealthSystem:health")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath(".:velocity")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-
-[sub_resource type="PackedScene" id="PackedScene_cx63e"]
-_bundled = {
-"conn_count": 2,
-"conns": PackedInt32Array(3, 7, 19, 18, 2, 0, 0, 6, 0, 21, 20, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("ClawBot", "position", "script", "CharacterBody2D", "Art", "Node2D", "Sprite2d", "texture", "Sprite2D", "Hitter", "Area2D", "CollisionShape2D", "shape", "HealthSystem", "health", "HitSystem", "MultiplayerSynchronizer", "replication_config", "hit", "body_entered", "_on_death", "die"),
-"node_count": 9,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 5, 4, -1, 0, 0, 1, 0, 8, 6, -1, 1, 7, 2, 0, 1, 0, 10, 9, -1, 0, 0, 3, 0, 11, 11, -1, 2, 1, 3, 12, 4, 0, 0, 0, 11, 11, -1, 2, 1, 5, 12, 6, 0, 0, 0, 2147483647, 13, 7, 1, 14, 8, 0, 0, 0, 2147483647, 15, 9, 0, 0, 0, 0, 16, 16, -1, 1, 17, 10, 0),
-"variants": [Vector2(823, 496), ExtResource("8_ga35d"), ExtResource("9_noduq"), Vector2(12.5, 1.5), SubResource("RectangleShape2D_wpndl"), Vector2(0, 3), SubResource("RectangleShape2D_ql5xb"), ExtResource("6_6sbyo"), 3, ExtResource("10_fgg7y"), SubResource("SceneReplicationConfig_m5mgt")],
-"version": 3
-}
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_228ee")
@@ -104,7 +46,7 @@ position = Vector2(823, 496)
 _spawnable_scenes = PackedStringArray("res://stuff/enemies/punching bag/punching_bag.tscn", "res://stuff/enemies/claw bot/claw_bot.tscn")
 spawn_path = NodePath("../EntityFolder")
 script = ExtResource("5_qlnic")
-entities_to_spawn = [SubResource("PackedScene_xr603"), SubResource("PackedScene_cx63e")]
+entities_to_spawn = [null, null]
 
 [node name="DebugCamera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
