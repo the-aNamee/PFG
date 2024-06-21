@@ -2,7 +2,7 @@ extends Node2D
 
 
 @onready var player_folder = $Players
-@onready var entity_spawner = $EntitySpawner
+@onready var entity_setup = $EntitySetup
 
 const SPAWN_RANDOM = 430 - 40
 
@@ -20,14 +20,14 @@ func _ready():
 	#if !OS.has_feature("dedicated_server"):
 		#add_player(1)
 	
-	entity_spawner.setup()
+	entity_setup.setup()
 
 
 func add_player(id: int):
 	Global.sprint("Player " + str(id) + " has joined the game.")
 	var character = preload("res://stuff/player/player.tscn").instantiate()
 	character.player_id = id
-	character.position = Vector2(40 + randf() * SPAWN_RANDOM, 360)
+	character.position = Vector2(40 + randf()   * SPAWN_RANDOM, 360)
 	character.name = str(id)
 	player_folder.add_child(character, true)
 

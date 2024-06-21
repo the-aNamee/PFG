@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgemb183l6bke"]
+
+[ext_resource type="Script" path="res://stuff/miscellaneous/entity setup/entity_setup.gd" id="1_y7j6h"]
+
+[node name="EntitySetup" type="Node"]
+script = ExtResource("1_y7j6h")

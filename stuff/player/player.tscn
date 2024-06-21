@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://clctywuy6360q"]
+[gd_scene load_steps=16 format=3 uid="uid://clctywuy6360q"]
 
 [ext_resource type="Script" path="res://stuff/player/Player.gd" id="1_t4s5t"]
-[ext_resource type="Texture2D" uid="uid://cyf8n5pwjq4w0" path="res://assets/art/player/player.svg" id="3_jt4fx"]
+[ext_resource type="Texture2D" uid="uid://cyf8n5pwjq4w0" path="res://assets/art/player/player.svg" id="3_b2ptu"]
 [ext_resource type="Script" path="res://stuff/player/PlayerInput.gd" id="3_suva5"]
-[ext_resource type="Texture2D" uid="uid://bjuqtlgy7yj1o" path="res://assets/art/player/sword.svg" id="4_nu86j"]
+[ext_resource type="Texture2D" uid="uid://bjuqtlgy7yj1o" path="res://assets/art/player/sword.svg" id="4_ml655"]
+[ext_resource type="Script" path="res://stuff/player/PlayerWeapon.gd" id="5_0bs8x"]
 [ext_resource type="PackedScene" uid="uid://dm1ieqpngwl4s" path="res://stuff/systems/hit system/hit_system.tscn" id="5_8w73v"]
+[ext_resource type="Script" path="res://stuff/equipables/weapons/sword/Sword.gd" id="5_y8moi"]
 [ext_resource type="PackedScene" uid="uid://chm7svgl6dutb" path="res://stuff/systems/health system/health_system.tscn" id="6_vwj8c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_voq87"]
@@ -30,118 +32,88 @@ properties/0/path = NodePath("PlayerInput:direction")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[sub_resource type="Animation" id="Animation_e71q2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcxn8"]
+size = Vector2(35, 42)
+
+[sub_resource type="Animation" id="Animation_kkktk"]
 resource_name = "idle"
 length = 0.001
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword:position")
+tracks/0/path = NodePath("Sword:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(8, 13)]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.26893, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
-tracks/1/type = "value"
+tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword:rotation")
+tracks/1/path = NodePath("Sword:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-2.09203]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
-tracks/2/type = "value"
+tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("..:can_turn_around")
+tracks/2/path = NodePath("Sword:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Area2D/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_bhbdn"]
+[sub_resource type="Animation" id="Animation_gyrh3"]
 resource_name = "slash"
-length = 0.2
-tracks/0/type = "value"
+length = 0.6
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword:position")
+tracks/0/path = NodePath("Sword:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(8, 13), Vector2(12, 14), Vector2(8, 13)]
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-2.26893, -0.25, 0, 0.25, 0, -0.528707, -0.25, 0, 0.25, 0, 0.498948, -0.25, 0, 0.25, 0, -0.528707, -0.25, 0, 0.25, 0, -2.26893, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6)
 }
-tracks/1/type = "value"
+tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword:rotation")
+tracks/1/path = NodePath("Sword:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-2.09203, -0.803744, -2.09203]
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6)
 }
-tracks/2/type = "value"
+tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Sword:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..:can_turn_around")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1qha"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ysvug"]
 _data = {
-"idle": SubResource("Animation_e71q2"),
-"slash": SubResource("Animation_bhbdn")
+"idle": SubResource("Animation_kkktk"),
+"slash": SubResource("Animation_gyrh3")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcxn8"]
-size = Vector2(20, 41)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_t4s5t")
@@ -159,36 +131,47 @@ script = ExtResource("3_suva5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
-limit_right = 2496
 limit_bottom = 648
 
 [node name="Art" type="Node2D" parent="."]
 
 [node name="Sprite2d" type="Sprite2D" parent="Art"]
-texture = ExtResource("3_jt4fx")
+texture = ExtResource("3_b2ptu")
 
-[node name="Sword" type="Sprite2D" parent="Art"]
-position = Vector2(8, 13)
-rotation = -2.09203
-texture = ExtResource("4_nu86j")
-offset = Vector2(18.335, 0)
+[node name="Weapon" type="Node2D" parent="Art"]
+z_index = 1
+script = ExtResource("5_0bs8x")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
-libraries = {
-"": SubResource("AnimationLibrary_c1qha")
-}
+[node name="Sword" type="Node2D" parent="Art/Weapon"]
+script = ExtResource("5_y8moi")
 
-[node name="Area2D" type="Area2D" parent="Art"]
+[node name="Area2D" type="Area2D" parent="Art/Weapon/Sword"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Art/Area2D"]
-position = Vector2(32, -0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Art/Weapon/Sword/Area2D"]
+position = Vector2(39.5, 4)
 shape = SubResource("RectangleShape2D_rcxn8")
 disabled = true
 
-[node name="HitSystem" parent="." instance=ExtResource("5_8w73v")]
+[node name="HitSystem" parent="Art/Weapon/Sword" instance=ExtResource("5_8w73v")]
+knockback = 300.0
+vertical_knockback = 300.0
+
+[node name="Sword" type="Sprite2D" parent="Art/Weapon/Sword"]
+position = Vector2(8, 16)
+rotation = -2.26893
+texture = ExtResource("4_ml655")
+offset = Vector2(18.335, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Art/Weapon/Sword"]
+libraries = {
+"": SubResource("AnimationLibrary_ysvug")
+}
+autoplay = "idle"
 
 [node name="HealthSystem" parent="." instance=ExtResource("6_vwj8c")]
 health = 4
 
-[connection signal="body_entered" from="Art/Area2D" to="HitSystem" method="hit"]
+[connection signal="body_entered" from="Art/Weapon/Sword/Area2D" to="Art/Weapon/Sword/HitSystem" method="hit"]
+[connection signal="animation_finished" from="Art/Weapon/Sword/AnimationPlayer" to="Art/Weapon/Sword" method="_on_animation_finished"]
+[connection signal="apply_knockback" from="HealthSystem" to="." method="_apply_knockback"]
 [connection signal="die" from="HealthSystem" to="." method="_on_death"]

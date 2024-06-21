@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dm1ieqpngwl4s" path="res://stuff/systems/hit system/hit_system.tscn" id="4_ob6ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpndl"]
-size = Vector2(3, 5)
+size = Vector2(1, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ql5xb"]
-size = Vector2(20, 26)
+size = Vector2(16, 26)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m5mgt"]
 properties/0/path = NodePath(".:position")
@@ -36,7 +36,7 @@ texture = ExtResource("2_srrao")
 [node name="Hitter" type="Area2D" parent="Art"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Art/Hitter"]
-position = Vector2(12.5, 1.5)
+position = Vector2(14, 1)
 shape = SubResource("RectangleShape2D_wpndl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -44,12 +44,15 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_ql5xb")
 
 [node name="HealthSystem" parent="." instance=ExtResource("2_jdgqk")]
-health = 3
+health = 2
 
 [node name="HitSystem" parent="." instance=ExtResource("4_ob6ls")]
+knockback = 300.0
+vertical_knockback = 300.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_m5mgt")
 
 [connection signal="body_entered" from="Art/Hitter" to="HitSystem" method="hit"]
+[connection signal="apply_knockback" from="HealthSystem" to="." method="_apply_knockback"]
 [connection signal="die" from="HealthSystem" to="." method="_on_death"]
