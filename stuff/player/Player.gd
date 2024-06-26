@@ -34,8 +34,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	if player_id == multiplayer.get_unique_id():
 		$Camera2D.make_current()
-	
-	#set_physics_process(multiplayer.is_server())
 
 func _physics_process(delta):
 	# Add the gravity.

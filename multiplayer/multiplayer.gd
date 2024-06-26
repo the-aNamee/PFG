@@ -1,6 +1,6 @@
 extends Node
 
-const PORT = 4433
+const PORT = 60842
 
 func _ready():
 	#get_tree().paused
@@ -9,6 +9,10 @@ func _ready():
 	if DisplayServer.get_name() == "headless":
 		print("Automatically starting dedicated server.")
 		_on_host_pressed.call_deferred()
+		return
+	
+	if OS.has_feature("client"):
+		_on_connect_pressed()
 
 
 func _on_host_pressed():

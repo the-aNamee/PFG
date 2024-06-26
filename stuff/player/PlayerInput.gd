@@ -8,7 +8,7 @@ extends MultiplayerSynchronizer
 func _ready():
 	set_process(get_multiplayer_authority() == multiplayer.get_unique_id())
 
-@rpc("any_peer")
+@rpc()
 func jump():
 	jumping = true
 
