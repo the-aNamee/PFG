@@ -1,3 +1,4 @@
+@icon("res://assets/editor icons/hit_system.svg")
 extends Node2D
 
 @export var strength = 1

@@ -15,7 +15,10 @@ var direction = 1
 var knockbacking = false
 var can_stop_knockbacking = true
 
-func _physics_process(delta):
+func _ready():
+	NetworkTime.on_tick.connect(tick)
+
+func tick(delta, _tick):
 	if is_on_wall():
 		direction = -direction
 	

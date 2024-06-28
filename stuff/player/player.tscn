@@ -1,38 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://clctywuy6360q"]
+[gd_scene load_steps=11 format=3 uid="uid://clctywuy6360q"]
 
 [ext_resource type="Script" path="res://stuff/player/Player.gd" id="1_t4s5t"]
 [ext_resource type="Texture2D" uid="uid://cyf8n5pwjq4w0" path="res://assets/art/player/player.svg" id="3_b2ptu"]
+[ext_resource type="Script" path="res://addons/netfox/tick-interpolator.gd" id="3_hqmpf"]
 [ext_resource type="Script" path="res://stuff/player/PlayerInput.gd" id="3_suva5"]
 [ext_resource type="Script" path="res://stuff/player/PlayerWeapon.gd" id="5_0bs8x"]
 [ext_resource type="PackedScene" uid="uid://dyuj8m7kk8jhn" path="res://stuff/equipables/weapons/sword/sword.tscn" id="5_xguwm"]
 [ext_resource type="PackedScene" uid="uid://chm7svgl6dutb" path="res://stuff/systems/health system/health_system.tscn" id="6_vwj8c"]
+[ext_resource type="Script" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="7_512qo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_voq87"]
 radius = 14.0
 height = 40.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nlcxu"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath(".:player_id")
 properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:player_id")
+properties/0/replication_mode = 0
+properties/1/path = NodePath("Art:scale")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath(".:velocity")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath("Art:scale")
-properties/3/spawn = true
-properties/3/replication_mode = 1
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ord1v"]
-properties/0/path = NodePath("PlayerInput:direction")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input")]
 collision_layer = 2
 script = ExtResource("1_t4s5t")
+input = NodePath("Input")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -41,8 +33,18 @@ shape = SubResource("CapsuleShape2D_voq87")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_nlcxu")
 
-[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_ord1v")
+[node name="RollbackSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("7_512qo")
+root = NodePath("..")
+state_properties = Array[String]([":position", ":velocity"])
+input_properties = Array[String](["Input:input_jump", "Input:direction"])
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("3_hqmpf")
+root = NodePath("..")
+properties = Array[String]([":position"])
+
+[node name="Input" type="Node" parent="."]
 script = ExtResource("3_suva5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
