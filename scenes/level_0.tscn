@@ -41,7 +41,7 @@ spawn_path = NodePath("../Players")
 spawn_location = NodePath("../EntityFolder")
 
 [node name="ClawBotSpawnerPos" parent="EntitySetup" instance=ExtResource("4_c3umf")]
-position = Vector2(792, 391)
+position = Vector2(1430, 521)
 entity_scene = ExtResource("5_lvmwr")
 entity_name = "ClawBot"
 
