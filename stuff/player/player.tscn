@@ -37,7 +37,7 @@ replication_config = SubResource("SceneReplicationConfig_nlcxu")
 script = ExtResource("7_512qo")
 root = NodePath("..")
 state_properties = Array[String]([":position", ":velocity"])
-input_properties = Array[String](["Input:input_jump", "Input:direction"])
+input_properties = Array[String](["Input:input_jump", "Input:direction", "Input:input_action_1"])
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("3_hqmpf")
@@ -46,6 +46,7 @@ properties = Array[String]([":position"])
 
 [node name="Input" type="Node" parent="."]
 script = ExtResource("3_suva5")
+direction = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0

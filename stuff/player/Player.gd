@@ -14,6 +14,7 @@ const FRICTION = 0.75
 const JUMP_VELOCITY = -400.0
 
 var current_friction: float
+var p_jump = false
 
 @export var player_id = 1 :
 	set(id):
@@ -43,10 +44,11 @@ func _rollback_tick(delta, _tick, _is_fresh):
 
 func move(delta):
 	force_update_is_on_X()
-	if not is_on_floor():
+	if !is_on_floor():
 		velocity.y += gravity * delta
-	elif input.input_jump:
+	elif input.input_jump && !p_jump:
 		velocity.y = JUMP_VELOCITY
+	p_jump = input.input_jump
 	
 	
 	# Handle action.
@@ -60,9 +62,9 @@ func move(delta):
 		velocity.x += input.direction * SPEED
 	
 	if input.direction > 0 && can_turn_around:
-		$Art.scale.x = 1
+		art.scale.x = 1
 	elif input.direction < 0 && can_turn_around:
-		$Art.scale.x = -1
+		art.scale.x = -1
 	
 	velocity *= NetworkTime.physics_factor
 	move_and_slide()

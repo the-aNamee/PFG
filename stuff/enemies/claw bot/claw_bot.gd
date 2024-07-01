@@ -34,8 +34,10 @@ func tick(delta, _tick):
 			art.scale.x = 1
 		elif direction < 0:
 			art.scale.x = -1
-	
+			
+	velocity *= NetworkTime.physics_factor
 	move_and_slide()
+	velocity /= NetworkTime.physics_factor
 	
 	if is_on_floor():
 		knockbacking = false
